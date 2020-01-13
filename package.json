@@ -1,6 +1,9 @@
 {
   "name": "esa-history",
   "private": true,
+  "scripts": {
+    "start": "webpack --watch"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
     "webpack": "^4.41.5",
