@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "description": "Manage browsing history for *.esa.io",
   "page_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/index.html"
   }
 }
