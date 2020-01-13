@@ -4,8 +4,13 @@
   "scripts": {
     "start": "webpack --watch"
   },
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }
