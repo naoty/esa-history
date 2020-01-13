@@ -4,7 +4,8 @@ const path = require("path");
 module.exports = {
   mode: "production",
   entry: {
-    background: ["./src/background/main.js"]
+    background: ["./src/background/main.js"],
+    popup: ["./src/popup/main.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
