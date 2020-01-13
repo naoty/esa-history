@@ -2,5 +2,8 @@
   "manifest_version": 2,
   "name": "esa-history",
   "version": "1.0.0",
-  "description": "Manage browsing history for *.esa.io"
+  "description": "Manage browsing history for *.esa.io",
+  "page_action": {
+    "default_popup": "popup.html"
+  }
 }
