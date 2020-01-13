@@ -3,6 +3,9 @@
   "name": "esa-history",
   "version": "1.0.0",
   "description": "Manage browsing history for *.esa.io",
+  "background": {
+    "scripts": ["background/bundle.js"]
+  },
   "page_action": {
     "default_popup": "popup/index.html"
   }
