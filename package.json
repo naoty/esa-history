@@ -5,6 +5,7 @@
     "start": "webpack --watch"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
