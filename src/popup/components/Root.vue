@@ -1,20 +1,8 @@
 <template>
   <div class="container">
     <ul>
-      <li>
-        <a href="#">Naoto Kaneko</a>
-      </li>
-      <li>
-        <a href="#">pt-archiver</a>
-      </li>
-      <li>
-        <a href="#">#1222: 2年以上使われていない集計用テーブルの削除</a>
-      </li>
-      <li>
-        <a href="#">#1197: member環境の管理にfor_eachを使えるか</a>
-      </li>
-      <li>
-        <a href="#">PushのIdentification情報</a>
+      <li v-for="post in posts" :key="post.id">
+        <a :href="post.url">{{ post.title }}</a>
       </li>
     </ul>
   </div>
@@ -43,5 +31,17 @@ a {
 </style>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      posts: []
+    };
+  },
+  mounted() {
+    const self = this;
+    chrome.storage.sync.get(null, posts => {
+      self.posts = Object.values(posts);
+    });
+  }
+};
 </script>
