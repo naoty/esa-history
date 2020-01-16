@@ -7,6 +7,12 @@
   "background": {
     "scripts": ["background/bundle.js"]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://*.esa.io/posts/*"],
+      "js": ["content/bundle.js"]
+    }
+  ],
   "page_action": {
     "default_popup": "popup/index.html"
   }
