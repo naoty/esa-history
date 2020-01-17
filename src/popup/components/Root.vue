@@ -57,8 +57,11 @@ export default {
   },
   mounted() {
     const self = this;
-    chrome.storage.sync.get(null, posts => {
-      self.posts = Object.values(posts);
+    chrome.storage.sync.get(null, items => {
+      const posts = Object.values(items);
+      posts.sort((a, b) => (a.timestamp - b.timestamp) * -1);
+
+      self.posts = posts;
     });
   },
   methods: {
