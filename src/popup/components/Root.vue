@@ -2,7 +2,7 @@
   <div class="container">
     <ul>
       <li v-for="post in posts" :key="post.id">
-        <a :href="post.url">{{ post.title }}</a>
+        <a :href="post.url" @click="open">{{ post.title }}</a>
       </li>
     </ul>
   </div>
@@ -42,6 +42,17 @@ export default {
     chrome.storage.sync.get(null, posts => {
       self.posts = Object.values(posts);
     });
+  },
+  methods: {
+    open(event) {
+      chrome.tabs.query({ active: true }, tabs => {
+        if (tabs.length == 0) {
+          return;
+        }
+
+        chrome.tabs.update(tabs[0].id, { url: event.target.href });
+      });
+    }
   }
 };
 </script>

@@ -3,7 +3,7 @@
   "name": "esa-history",
   "version": "1.0.0",
   "description": "Manage browsing history for *.esa.io",
-  "permissions": ["declarativeContent", "storage"],
+  "permissions": ["declarativeContent", "storage", "tabs"],
   "background": {
     "scripts": ["background/bundle.js"]
   },
