@@ -1,7 +1,9 @@
 name: release
 
 on:
-  - push
+  push:
+    tags:
+      - "v*"
 
 jobs:
   release:
@@ -13,9 +15,14 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install
-      - run: npm run build
-      - run: zip -r esa-history.zip dist
-      - id: create_release
+      - name: Build assets
+        run: npm run build
+      - name: Compress assets
+        run: |
+          mv dist esa-history
+          zip -r esa-history.zip esa-history
+      - name: Create release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -24,7 +31,8 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - uses: actions/upload-release-asset@v1.0.1
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
