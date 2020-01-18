@@ -2,7 +2,8 @@
   "name": "esa-history",
   "private": true,
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
