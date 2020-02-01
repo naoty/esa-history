@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <h1>esa-history</h1>
-    <input type="text" value />
+    <input ref="input" type="text" @keyup="search" />
     <ul>
-      <li v-for="post in posts" :key="post.id">
+      <li v-for="post in results" :key="post.id">
         <a :href="post.url" @click="open">{{ post.title }}</a>
       </li>
     </ul>
@@ -59,7 +59,8 @@ a {
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      results: []
     };
   },
   mounted() {
@@ -69,6 +70,7 @@ export default {
       posts.sort((a, b) => (a.timestamp - b.timestamp) * -1);
 
       self.posts = posts;
+      self.results = posts.slice(0, 10);
     });
   },
   methods: {
@@ -80,6 +82,15 @@ export default {
 
         chrome.tabs.update(tabs[0].id, { url: event.target.href });
       });
+    },
+    search(event) {
+      const keyword = this.$refs.input.value;
+
+      if (keyword === "") {
+        this.results = this.posts.slice(0, 10);
+      } else {
+        this.results = this.posts.filter(post => post.title.includes(keyword));
+      }
     }
   }
 };
