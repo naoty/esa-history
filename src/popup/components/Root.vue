@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>esa-history</h1>
+    <input type="text" value />
     <ul>
       <li v-for="post in posts" :key="post.id">
         <a :href="post.url" @click="open">{{ post.title }}</a>
@@ -29,9 +30,15 @@ h1 {
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
 
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
 ul {
   margin: 0;
-  padding-left: 2em;
+  padding-left: 1.25em;
 }
 
 li {
