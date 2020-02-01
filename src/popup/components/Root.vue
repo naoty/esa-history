@@ -84,13 +84,13 @@ export default {
       });
     },
     search(event) {
-      const keyword = this.$refs.input.value;
+      const keyword = this.$refs.input.value.toLowerCase();
 
       if (keyword === "") {
         this.results = this.posts.slice(0, 10);
-      } else {
-        this.results = this.posts.filter(post => post.title.includes(keyword));
+        return;
       }
+      this.results = this.posts.filter(post => post.document.includes(keyword));
     }
   }
 };
