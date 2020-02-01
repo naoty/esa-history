@@ -64,6 +64,8 @@ export default {
     };
   },
   mounted() {
+    this.$refs.input.focus();
+
     const self = this;
     chrome.storage.sync.get(null, items => {
       const posts = Object.values(items);
