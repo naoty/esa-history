@@ -67,12 +67,19 @@ export default {
     this.$refs.input.focus();
 
     const self = this;
-    chrome.storage.sync.get(null, items => {
-      const posts = Object.values(items);
-      posts.sort((a, b) => (a.timestamp - b.timestamp) * -1);
 
-      self.posts = posts;
-      self.results = posts.slice(0, 10);
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      const tab = tabs[0];
+      const url = new URL(tab.url);
+      const team = url.host.split(".")[0];
+
+      chrome.storage.sync.get(null, items => {
+        const posts = Object.values(items).filter(post => post.team === team);
+        posts.sort((a, b) => (a.timestamp - b.timestamp) * -1);
+
+        self.posts = posts;
+        self.results = posts.slice(0, 10);
+      });
     });
   },
   methods: {
