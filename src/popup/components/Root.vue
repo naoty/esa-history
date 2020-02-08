@@ -71,10 +71,12 @@ export default {
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       const tab = tabs[0];
       const url = new URL(tab.url);
-      const team = url.host.split(".")[0];
+      const team = url.host.endsWith(".esa.io") ? url.host.split(".")[0] : null;
 
       chrome.storage.sync.get(null, items => {
-        const posts = Object.values(items).filter(post => post.team === team);
+        const posts = Object.values(items).filter(
+          post => team === null || post.team === team
+        );
         posts.sort((a, b) => (a.timestamp - b.timestamp) * -1);
 
         self.posts = posts;
