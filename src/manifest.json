@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "esa-history",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Manage browsing history for *.esa.io",
   "permissions": ["storage", "tabs"],
   "browser_action": {
